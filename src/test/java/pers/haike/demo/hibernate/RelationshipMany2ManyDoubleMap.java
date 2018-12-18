@@ -1,7 +1,14 @@
 package pers.haike.demo.hibernate;
 
+import javax.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 import pers.haike.demo.hibernate.entity.RoleList;
 import pers.haike.demo.hibernate.entity.RoleMap;
 import pers.haike.demo.hibernate.entity.UserList;
@@ -13,6 +20,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Slf4j
+@RunWith(SpringRunner.class)
+@SpringBootTest
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class RelationshipMany2ManyDoubleMap {
     @Autowired
     private UserMapRepository userRepository;
@@ -21,7 +32,7 @@ public class RelationshipMany2ManyDoubleMap {
     private RoleMapRepository roleRepository;
 
     @Test
-    public void testSave() {
+    public void test1Save() {
         RoleMap r1 = new RoleMap();
         r1.setName("数据录入人员");
         roleRepository.save(r1);
@@ -44,12 +55,11 @@ public class RelationshipMany2ManyDoubleMap {
         u2Roles.put(r1.getId(), r1);
         u2.setRoleMapMap(u2Roles);
         userRepository.save(u2);
-
-        userRepository.flush();
     }
 
     @Test
-    public void testLoad() {
+    @Transactional
+    public void test2Load() {
         UserMap user = userRepository.findAll().get(0);
         System.out.println("user.name=" + user.getName());
 

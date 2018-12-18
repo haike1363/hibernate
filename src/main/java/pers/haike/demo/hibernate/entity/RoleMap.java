@@ -1,13 +1,22 @@
 package pers.haike.demo.hibernate.entity;
 
-import lombok.Data;
-
-import javax.persistence.*;
 import java.util.Map;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.MapKey;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 @Entity
-@Data
+@Setter
+@Getter
+@ToString(exclude = {"userMapMap"})
 public class RoleMap {
+
     @Id
     @GeneratedValue
     private int id;

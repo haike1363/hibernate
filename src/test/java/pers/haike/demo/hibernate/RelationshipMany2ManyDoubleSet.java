@@ -1,6 +1,7 @@
 package pers.haike.demo.hibernate;
 
 
+import javax.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -34,6 +35,7 @@ public class RelationshipMany2ManyDoubleSet {
     @Autowired
     private Role2Repository roleRepository;
 
+    // 多对多 - 双向
     @Test
     public void test1Save() {
         Role2 r1 = new Role2();
@@ -47,7 +49,6 @@ public class RelationshipMany2ManyDoubleSet {
         Role2 r3 = new Role2();
         r3.setName("大区经理1");
         roleRepository.save(r3);
-        roleRepository.flush();
 
         User2 u1 = new User2();
         u1.setName("10");
@@ -74,10 +75,10 @@ public class RelationshipMany2ManyDoubleSet {
         userRepository.save(u1);
         userRepository.save(u2);
         userRepository.save(u3);
-        userRepository.flush();
     }
 
     @Test
+    @Transactional
     public void test2Load() {
         User2 user = userRepository.findAll().get(0);
         System.out.println("user.name=" + user.getName());

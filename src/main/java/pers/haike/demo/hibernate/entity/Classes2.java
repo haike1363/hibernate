@@ -1,5 +1,6 @@
 package pers.haike.demo.hibernate.entity;
 
+import javax.persistence.FetchType;
 import lombok.Data;
 
 import javax.persistence.Entity;
@@ -7,9 +8,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.util.Set;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 @Entity
-@Data
+@Setter
+@Getter
+@ToString(exclude = {"students"}) // 在mappedBy的一端排除相互引用
 public class Classes2 {
     @Id
     @GeneratedValue

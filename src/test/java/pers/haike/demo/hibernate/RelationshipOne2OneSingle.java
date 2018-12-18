@@ -24,9 +24,10 @@ public class RelationshipOne2OneSingle {
     @Autowired
     private PersonRepository personRepository;
 
-    // 唯一外键关联
+    // 唯一外键关联-单向(unilateralism)
     @Test
-    public void testSave() {
+    public void test1Save() {
+        // 必须先保存mapped对象
         IdCard idCard = new IdCard();
         idCard.setCardNo("888888");
         idCardRepository.save(idCard);
@@ -38,9 +39,7 @@ public class RelationshipOne2OneSingle {
     }
 
     @Test
-    public void testLoad() {
-        IdCard idCard = idCardRepository.findAll().get(0);
-        log.info(idCard.toString());
+    public void test2Load() {
         Person person = personRepository.findAll().get(0);
         log.info(person.toString());
     }

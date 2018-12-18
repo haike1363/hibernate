@@ -1,6 +1,7 @@
 package pers.haike.demo.hibernate;
 
 
+import javax.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,8 +25,10 @@ public class RelationshipMany2One {
     @Autowired
     private UserRepository userRepository;
 
+    // 多对一 单向
     @Test
-    public void test() {
+    public void test1Save() {
+        // 先存储多的对象
         AdminGroup group = new AdminGroup();
         group.setName("wjt276");
         groupRepository.save(group);
@@ -41,5 +44,12 @@ public class RelationshipMany2One {
         //开始存储
         userRepository.save(user1);
         userRepository.save(user2);
+    }
+
+    @Test
+    @Transactional
+    public void test2Load() {
+        User user = userRepository.findAll().get(0);
+        log.info(user.toString());
     }
 }

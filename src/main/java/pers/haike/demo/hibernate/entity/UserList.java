@@ -1,5 +1,6 @@
 package pers.haike.demo.hibernate.entity;
 
+import javax.persistence.FetchType;
 import lombok.Data;
 
 import javax.persistence.Entity;
@@ -18,6 +19,6 @@ public class UserList {
 
     private String name;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<RoleList> roleListList;
 }

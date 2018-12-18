@@ -28,8 +28,9 @@ public class RelationshipInhierarchyOneTable {
     @Autowired
     private BirdRepository birdRepository;
 
+    // 单表继承SINGLE_TABLE,推荐使用
     @Test
-    public void testSave() {
+    public void test1Save() {
         Pig pig = new Pig();
         pig.setName("猪猪");
         pig.setSex(true);
@@ -41,10 +42,10 @@ public class RelationshipInhierarchyOneTable {
         bird.setSex(false);
         bird.setHeight(50);
         birdRepository.save(bird);
-        // testLoad();
     }
 
-    public void testLoad() {
+    @Test
+    public void test2Load() {
         Pig pig = pigRepository.findAll().get(0);
         System.out.println("pig.name=" + pig.getName());
         System.out.println("pig.weight=" + pig.getWeight());

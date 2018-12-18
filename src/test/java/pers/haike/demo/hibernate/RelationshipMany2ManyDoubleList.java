@@ -1,7 +1,14 @@
 package pers.haike.demo.hibernate;
 
+import javax.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 import pers.haike.demo.hibernate.entity.RoleList;
 import pers.haike.demo.hibernate.entity.UserList;
 import pers.haike.demo.hibernate.service.RoleListRepository;
@@ -10,7 +17,12 @@ import pers.haike.demo.hibernate.service.UserListRepository;
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
+@RunWith(SpringRunner.class)
+@SpringBootTest
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class RelationshipMany2ManyDoubleList {
+
     @Autowired
     private UserListRepository userRepository;
 
@@ -18,7 +30,7 @@ public class RelationshipMany2ManyDoubleList {
     private RoleListRepository roleRepository;
 
     @Test
-    public void testSave() {
+    public void test1Save() {
         RoleList r1 = new RoleList();
         r1.setName("数据录入人员");
         roleRepository.save(r1);
@@ -42,12 +54,11 @@ public class RelationshipMany2ManyDoubleList {
         u2Roles.add(r1);
         u2.setRoleListList(u2Roles);
         userRepository.save(u2);
-
-        userRepository.flush();
     }
 
     @Test
-    public void testLoad() {
+    @Transactional
+    public void test2Load() {
         UserList user = userRepository.findAll().get(0);
         System.out.println("user.name=" + user.getName());
 

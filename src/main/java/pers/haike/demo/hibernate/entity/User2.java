@@ -15,6 +15,6 @@ public class User2 {
 
     private String name;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role2> role2s;
 }

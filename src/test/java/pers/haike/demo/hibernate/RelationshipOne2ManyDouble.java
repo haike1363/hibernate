@@ -1,6 +1,7 @@
 package pers.haike.demo.hibernate;
 
 
+import javax.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,15 +34,14 @@ public class RelationshipOne2ManyDouble {
     @Autowired
     private Student2Repository studentRepository;
 
-    private AtomicLong classesId = new AtomicLong();
-
+    // 一对多 - 双向
     @Test
-    public void testSave() {
-        // 在多的一端维护关系,效率高
+    public void test1Save() {
+        // 在多端维护关系,效率高
+        // 先保存一的一端
         Classes2 classes = new Classes2();
         classes.setName("wjt168");
         classesRepository.save(classes);
-        classesId.set(classes.getId());
 
         Student2 student1 = new Student2();
         student1.setName("10");
@@ -54,8 +54,10 @@ public class RelationshipOne2ManyDouble {
         studentRepository.save(student2);
     }
 
-    public void testLoad() {
-        Classes2 classes = classesRepository.findById(classesId.longValue()).get();
+    @Test
+    @Transactional
+    public void test2Load() {
+        Classes2 classes = classesRepository.findAll().get(0);
 
         System.out.println("classes.name=" + classes.getName());
         Set<Student2> students = classes.getStudents();

@@ -1,6 +1,7 @@
 package pers.haike.demo.hibernate;
 
 
+import javax.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,18 +23,25 @@ public class RelationshipComponent {
     private UserRepository userRepository;
 
 
+    // component（组件）关联映射
     @Test
-    public void test() {
-        User user= new User();
-        user.setName("haike");
-
+    public void test1Save() {
         Contact contact = new Contact();
         contact.setEmail("wjt276");
         contact.setAddress("aksdfj");
         contact.setZipCode("230051");
         contact.setContactTel("3464661");
 
+        User user= new User();
+        user.setName("haike");
         user.setContact(contact);
         userRepository.save(user);
+    }
+
+    @Test
+    @Transactional
+    public void test2Load() {
+        User user = userRepository.findAll().get(0);
+        log.info(user.toString());
     }
 }

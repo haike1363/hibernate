@@ -15,7 +15,7 @@ public class UserMap {
 
     private String name;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @MapKey(name = "id")
     private Map<Integer, RoleMap> roleMapMap;
 }

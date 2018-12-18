@@ -1,6 +1,9 @@
 package pers.haike.demo.hibernate;
 
 
+import java.util.HashSet;
+import java.util.Set;
+import javax.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,9 +14,6 @@ import pers.haike.demo.hibernate.entity.Role;
 import pers.haike.demo.hibernate.entity.User;
 import pers.haike.demo.hibernate.service.RoleRepository;
 import pers.haike.demo.hibernate.service.UserRepository;
-
-import java.util.HashSet;
-import java.util.Set;
 
 
 @Slf4j
@@ -27,8 +27,9 @@ public class RelationshipMany2ManySingle {
     @Autowired
     private RoleRepository roleRepository;
 
+    // 多对多 - 单向
     @Test
-    public void testSave() {
+    public void test1Save() {
         Role r1 = new Role();
         r1.setName("数据录入人员");
         roleRepository.save(r1);
@@ -43,21 +44,21 @@ public class RelationshipMany2ManySingle {
 
         User u1 = new User();
         u1.setName("10");
-        Set<Role>u1Roles = new HashSet<>();
+        Set<Role> u1Roles = new HashSet<>();
         u1Roles.add(r1);
         u1Roles.add(r2);
         u1.setRoles(u1Roles);
 
         User u2 = new User();
         u2.setName("祖儿");
-        Set<Role>u2Roles = new HashSet<>();
+        Set<Role> u2Roles = new HashSet<>();
         u2Roles.add(r2);
         u2Roles.add(r3);
         u2.setRoles(u2Roles);
 
         User u3 = new User();
         u3.setName("成龙");
-        Set<Role>u3Roles = new HashSet<>();
+        Set<Role> u3Roles = new HashSet<>();
         u3Roles.add(r1);
         u3Roles.add(r2);
         u3Roles.add(r3);
@@ -67,14 +68,15 @@ public class RelationshipMany2ManySingle {
         userRepository.save(u2);
         userRepository.save(u3);
 
-        // testLoad();
     }
 
-    public void testLoad() {
+    @Test
+    @Transactional
+    public void test2Load() {
         User user = userRepository.findAll().get(0);
         System.out.println("user.name=" + user.getName());
 
-        for(Role role : user.getRoles()){
+        for (Role role : user.getRoles()) {
             System.out.println(role.getName());
         }
     }

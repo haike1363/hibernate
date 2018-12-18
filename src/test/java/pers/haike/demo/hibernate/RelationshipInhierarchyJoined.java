@@ -25,8 +25,9 @@ public class RelationshipInhierarchyJoined {
     @Autowired
     private BirdJoinedRepository birdRepository;
 
+    // 具体表继承JOINED
     @Test
-    public void testSave() {
+    public void test1Save() {
         PigJoined pig = new PigJoined();
         pig.setName("猪猪");
         pig.setSex(true);
@@ -41,7 +42,7 @@ public class RelationshipInhierarchyJoined {
     }
 
     @Test
-    public void testLoad() {
+    public void test2Load() {
         PigJoined pig = pigRepository.findAll().get(0);
         System.out.println("pig.name=" + pig.getName());
         System.out.println("pig.weight=" + pig.getWeight());

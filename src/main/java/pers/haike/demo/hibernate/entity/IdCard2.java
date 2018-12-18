@@ -1,15 +1,19 @@
 package pers.haike.demo.hibernate.entity;
 
-import lombok.Data;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 @Entity
-@Data
+@Setter
+@Getter
+@ToString(exclude = {"person2"}) // 在mappedBy的一端排除相互引用
 public class IdCard2 {
+
     @Id
     @GeneratedValue
     private int id;
