@@ -1,9 +1,6 @@
 package pers.haike.demo.hibernate;
 
 
-import java.util.HashSet;
-import java.util.Set;
-import javax.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,6 +11,10 @@ import pers.haike.demo.hibernate.entity.Role;
 import pers.haike.demo.hibernate.entity.User;
 import pers.haike.demo.hibernate.service.RoleRepository;
 import pers.haike.demo.hibernate.service.UserRepository;
+
+import javax.transaction.Transactional;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Slf4j

@@ -1,9 +1,7 @@
 package pers.haike.demo.hibernate;
 
 
-import javax.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +10,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import pers.haike.demo.hibernate.entity.Contact;
 import pers.haike.demo.hibernate.entity.User;
 import pers.haike.demo.hibernate.service.UserRepository;
+
+import javax.transaction.Transactional;
 
 
 @Slf4j

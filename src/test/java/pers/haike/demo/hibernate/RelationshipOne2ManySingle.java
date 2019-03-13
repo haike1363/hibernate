@@ -1,7 +1,6 @@
 package pers.haike.demo.hibernate;
 
 
-import javax.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,11 +13,10 @@ import pers.haike.demo.hibernate.entity.Student;
 import pers.haike.demo.hibernate.service.ClassesRepository;
 import pers.haike.demo.hibernate.service.StudentRepository;
 
+import javax.transaction.Transactional;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicLong;
 
 
 @Slf4j

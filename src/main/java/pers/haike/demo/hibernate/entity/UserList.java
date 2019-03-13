@@ -1,12 +1,8 @@
 package pers.haike.demo.hibernate.entity;
 
-import javax.persistence.FetchType;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.util.List;
 
 

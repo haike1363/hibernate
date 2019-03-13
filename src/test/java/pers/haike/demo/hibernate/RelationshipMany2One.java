@@ -1,7 +1,6 @@
 package pers.haike.demo.hibernate;
 
 
-import javax.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,6 +11,8 @@ import pers.haike.demo.hibernate.entity.AdminGroup;
 import pers.haike.demo.hibernate.entity.User;
 import pers.haike.demo.hibernate.service.AdminGroupRepository;
 import pers.haike.demo.hibernate.service.UserRepository;
+
+import javax.transaction.Transactional;
 
 
 @Slf4j

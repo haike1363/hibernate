@@ -1,6 +1,5 @@
 package pers.haike.demo.hibernate;
 
-import javax.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -9,15 +8,13 @@ import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import pers.haike.demo.hibernate.entity.RoleList;
 import pers.haike.demo.hibernate.entity.RoleMap;
-import pers.haike.demo.hibernate.entity.UserList;
 import pers.haike.demo.hibernate.entity.UserMap;
-import pers.haike.demo.hibernate.service.*;
+import pers.haike.demo.hibernate.service.RoleMapRepository;
+import pers.haike.demo.hibernate.service.UserMapRepository;
 
-import java.util.ArrayList;
+import javax.transaction.Transactional;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Slf4j

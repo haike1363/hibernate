@@ -7,11 +7,12 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import pers.haike.demo.hibernate.entity.*;
-import pers.haike.demo.hibernate.service.*;
-
-import java.util.HashSet;
-import java.util.Set;
+import pers.haike.demo.hibernate.entity.Animal;
+import pers.haike.demo.hibernate.entity.Bird;
+import pers.haike.demo.hibernate.entity.Pig;
+import pers.haike.demo.hibernate.service.AnimalRepository;
+import pers.haike.demo.hibernate.service.BirdRepository;
+import pers.haike.demo.hibernate.service.PigRepository;
 
 
 @Slf4j

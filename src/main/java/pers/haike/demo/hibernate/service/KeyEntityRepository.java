@@ -1,10 +1,11 @@
 package pers.haike.demo.hibernate.service;
 
-import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import pers.haike.demo.hibernate.entity.KeyEntity;
+
+import java.util.List;
 
 public interface KeyEntityRepository extends JpaRepository<KeyEntity, KeyEntity.PKey> {
 

@@ -1,6 +1,5 @@
 package pers.haike.demo.hibernate;
 
-import javax.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -14,6 +13,7 @@ import pers.haike.demo.hibernate.entity.UserList;
 import pers.haike.demo.hibernate.service.RoleListRepository;
 import pers.haike.demo.hibernate.service.UserListRepository;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
